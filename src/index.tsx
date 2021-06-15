@@ -1,5 +1,6 @@
 import { StrictMode } from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 import { App } from 'components';
 import { store } from 'store';
 import { Provider } from 'react-redux';
@@ -8,9 +9,11 @@ import './index.css';
 
 render(
   <StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
+    <Router>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </Router>
   </StrictMode>,
   document.getElementById('root')
 );

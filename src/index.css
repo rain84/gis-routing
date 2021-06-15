@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html, body, #root {
+  height: 100%;
+}
+
+.single-child-in-center {
+  @apply flex content-center justify-items-stretch;
+}
+
+.single-child-in-center > :first-child {
+  @apply flex-1;
+}

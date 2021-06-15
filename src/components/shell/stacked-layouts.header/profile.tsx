@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { BellIcon } from '@heroicons/react/outline';
+import { Link } from 'react-router-dom';
+import { Icons } from 'components/icons';
 import { classNames } from 'utils';
 import { profile } from '../stacked-layouts.resources';
 import { Media } from '../types';
@@ -41,18 +43,27 @@ const Desktop = () => (
                 static
                 className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5 focus:outline-none"
               >
-                {profile.map(({ item, href }) => (
-                  <Menu.Item key={item}>
-                    {({ active }) => (
-                      <a
-                        href={href}
-                        className={classNames(active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700')}
-                      >
-                        {item}
-                      </a>
-                    )}
-                  </Menu.Item>
-                ))}
+                {profile.map(({ item, href, icon }) => {
+                  const IconComponent = icon ? Icons[icon] : null;
+
+                  return (
+                    <Menu.Item key={item}>
+                      {({ active }) => (
+                        <Link
+                          to={href}
+                          className={classNames(
+                            active ? 'bg-gray-100' : '',
+                            'block px-4 py-2 text-sm text-gray-700',
+                            'flex flex-row'
+                          )}
+                        >
+                          {IconComponent && <IconComponent className="inline-block" />}
+                          <div className="w-min pl-3 inline-block">{item}</div>
+                        </Link>
+                      )}
+                    </Menu.Item>
+                  );
+                })}
               </Menu.Items>
             </Transition>
           </>
@@ -82,15 +93,19 @@ const Mobile = () => (
       </button>
     </div>
     <div className="mt-3 px-2 space-y-1">
-      {profile.map(({ item, href }) => (
-        <a
-          key={item}
-          href={href}
-          className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
-        >
-          {item}
-        </a>
-      ))}
+      {profile.map(({ item, href, icon }) => {
+        const IconComponent = icon ? Icons[icon] : null;
+        return (
+          <Link
+            key={item}
+            to={href}
+            className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+          >
+            {IconComponent && <IconComponent className="inline-block" />}
+            <div className="w-min pl-3 inline-block">{item}</div>
+          </Link>
+        );
+      })}
     </div>
   </div>
 );
