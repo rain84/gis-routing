@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { Location, Icons } from 'components/icons';
 import { URLS } from 'routing/urls';
 import { navigation } from '../stacked-layouts.resources';
@@ -18,15 +18,15 @@ const Desktop = () => (
           const IconComponent = icon ? Icons[icon] : null;
 
           return (
-            <Link
+            <NavLink
               key={item}
               to={href}
-              // active: className="bg-gray-900 text-white px-3 py-2 rounded-md text-sm font-medium"
-              className="flex flex-row text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              activeClassName="active-color"
+              className="flex flex-row hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white"
             >
               {IconComponent && <IconComponent className="inline" />}
               <div className="w-min pl-3 inline">{item}</div>
-            </Link>
+            </NavLink>
           );
         })}
       </div>
@@ -40,14 +40,15 @@ const Mobile = () => (
       const IconComponent = icon ? Icons[icon] : null;
 
       return (
-        <Link
+        <NavLink
           key={item}
           to={href}
+          activeClassName="active-color"
           className="flex-1 flex-row text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
         >
           {IconComponent && <IconComponent className="inline" />}
           <span className="w-min pl-3">{item}</span>
-        </Link>
+        </NavLink>
       );
     })}
   </div>

@@ -1,9 +1,8 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
 import { BellIcon } from '@heroicons/react/outline';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Icons } from 'components/icons';
-import { classNames } from 'utils';
 import { profile } from '../stacked-layouts.resources';
 import { Media } from '../types';
 
@@ -48,19 +47,14 @@ const Desktop = () => (
 
                   return (
                     <Menu.Item key={item}>
-                      {({ active }) => (
-                        <Link
-                          to={href}
-                          className={classNames(
-                            active ? 'bg-gray-100' : '',
-                            'block px-4 py-2 text-sm text-gray-700',
-                            'flex flex-row'
-                          )}
-                        >
-                          {IconComponent && <IconComponent className="inline-block" />}
-                          <div className="w-min pl-3 inline-block">{item}</div>
-                        </Link>
-                      )}
+                      <NavLink
+                        to={href}
+                        activeClassName="active-color"
+                        className="flex flex-row px-4 py-2 text-sm text-gray-700"
+                      >
+                        {IconComponent && <IconComponent className="inline-block" />}
+                        <div className="w-min pl-3 inline-block">{item}</div>
+                      </NavLink>
                     </Menu.Item>
                   );
                 })}
@@ -96,14 +90,15 @@ const Mobile = () => (
       {profile.map(({ item, href, icon }) => {
         const IconComponent = icon ? Icons[icon] : null;
         return (
-          <Link
+          <NavLink
             key={item}
             to={href}
+            activeClassName="active-color"
             className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
           >
             {IconComponent && <IconComponent className="inline-block" />}
             <div className="w-min pl-3 inline-block">{item}</div>
-          </Link>
+          </NavLink>
         );
       })}
     </div>

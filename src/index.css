@@ -6,10 +6,22 @@ html, body, #root {
   height: 100%;
 }
 
+/* ================= UTILS ==================== */
 .single-child-in-center {
   @apply flex content-center justify-items-stretch;
 }
 
 .single-child-in-center > :first-child {
   @apply flex-1;
+}
+
+/* ================= LEAFLET ================== */
+.leaflet-container {
+  height: inherit;
+  z-index: -1;
+}
+
+/* ================= THEME ==================== */
+.active-color {
+  @apply text-green-500 hover:text-green-200;
 }
