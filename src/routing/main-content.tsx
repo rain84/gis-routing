@@ -1,22 +1,15 @@
-import { Switch, Route } from 'react-router-dom';
-import { navigation, profile } from 'components/shell/stacked-layouts.resources';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import { URLS } from './urls';
-
-const implementedInMVP = ['Карта'];
-
-const views = [...navigation, ...profile].filter(({ item }) => !implementedInMVP.includes(item));
+import { RouteStub } from './main-content.stub';
+import { Map } from 'features/map';
 
 export const MainContent = () => (
   <Switch>
-    <Route exact path={URLS.LEVEL1.home}>
-      <p>Home</p>
+    <Route exact path={URLS.LEVEL1.home} component={Map} />
+    <Route path={URLS.LEVEL1['show-map']} component={Map} />
+    { RouteStub }
+    <Route path='*'>
+      <Redirect to={URLS.LEVEL1.home}   />
     </Route>
-
-    {views.map(({ href, item }) => (
-      <Route path={href} key={href}>
-        <p>{item}</p>
-        <p>To be implemented..</p>
-      </Route>
-    ))}
   </Switch>
 );
