@@ -25,7 +25,7 @@ const Desktop = () => (
               className="flex flex-row hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white"
             >
               {IconComponent && <IconComponent className="inline" />}
-              <div className="w-min pl-3 inline">{item}</div>
+              <div className="w-min pl-3 lg:inline hidden">{item}</div>
             </NavLink>
           );
         })}
