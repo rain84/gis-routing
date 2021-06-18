@@ -1,8 +1,5 @@
 declare interface FCProps {
   className?: string;
-}
-
-declare interface ReactChildren {
   children?: React.ReactNode;
 }
 

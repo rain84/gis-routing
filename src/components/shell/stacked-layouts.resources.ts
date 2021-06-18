@@ -47,26 +47,26 @@ export const navigation: Entity[] = [
   }
 ];
 
-export const profile: Entity[]  = [
+export const profile: Entity[] = [
   {
     // item: 'Your Profile',
     item: 'Аккаунт',
     href: '/profile',
     isEnabled: true,
-    icon: 'UserCircle',
+    icon: 'UserCircle'
   },
   {
     // item: 'Settings',
     item: 'Настройки',
     href: '/settings',
     isEnabled: true,
-    icon: 'Cog',
+    icon: 'Cog'
   },
   {
     // item: 'Sign out',
     item: 'Выйти',
-    href: '/signout',
+    href: '/logout',
     isEnabled: true,
-    icon: 'Logout',
+    icon: 'Logout'
   }
 ];

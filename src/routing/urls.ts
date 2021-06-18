@@ -9,7 +9,7 @@ export namespace URLS {
     'chat' = '/chat',
     'profile' = '/profile',
     'settings' = '/settings',
-    'signout' = '/signout'
+    'logout' = '/logout'
   }
 
   export type LEVEL1_KEYS = keyof typeof LEVEL1;
