@@ -9,6 +9,7 @@ export namespace URLS {
     'chat' = '/chat',
     'profile' = '/profile',
     'settings' = '/settings',
+    'login' = '/login',
     'logout' = '/logout'
   }
 

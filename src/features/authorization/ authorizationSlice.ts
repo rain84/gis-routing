@@ -4,20 +4,30 @@ import { fetchAuth } from './ authorizationAPI';
 
 export interface authorizationState {
   isAuthorized: boolean;
+  email: string;
+  password: string;
 }
 
 const initialState: authorizationState = {
-  isAuthorized: false
+  isAuthorized: false,
+  email: '',
+  password: ''
 };
 
 export const authorizationSlice = createSlice({
   name: 'authorization',
   initialState,
   reducers: {
-    login: (state) => {
-      state.isAuthorized = true;
+    login: (state, action) => {
+      Object.assign(state, {
+        ...action.payload,
+        isAuthorized: true
+      });
     },
     logout: (state) => {
+      Object.assign(state, {
+        ...initialState
+      });
       state.isAuthorized = false;
     }
   }
