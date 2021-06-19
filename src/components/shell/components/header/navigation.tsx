@@ -1,8 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import { Location, Icons } from 'components/icons';
 import { URLS } from 'routing/urls';
-import { navigation } from '../stacked-layouts.resources';
-import { Media } from '../types';
+import { navigation } from '../../stacked-layouts.resources';
+import { Media } from '../../types';
 
 const Desktop = () => (
   <div className="flex items-center">

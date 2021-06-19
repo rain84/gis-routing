@@ -1,33 +1,22 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from 'store';
-import { fetchAuth } from './authorizationAPI';
+import { createSlice } from '@reduxjs/toolkit';
+import { RootState } from 'store';
 
-export interface authorizationState {
+export interface AuthorizationState {
   isAuthorized: boolean;
-  email: string;
-  password: string;
 }
 
-const initialState: authorizationState = {
-  isAuthorized: false,
-  email: '',
-  password: ''
+const initialState: AuthorizationState = {
+  isAuthorized: false
 };
 
 export const authorizationSlice = createSlice({
   name: 'authorization',
   initialState,
   reducers: {
-    login: (state, action) => {
-      Object.assign(state, {
-        ...action.payload,
-        isAuthorized: true
-      });
+    login: (state) => {
+      state.isAuthorized = true;
     },
     logout: (state) => {
-      Object.assign(state, {
-        ...initialState
-      });
       state.isAuthorized = false;
     }
   }
