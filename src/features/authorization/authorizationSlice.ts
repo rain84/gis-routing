@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from 'store';
-import { fetchAuth } from './ authorizationAPI';
+import { fetchAuth } from './authorizationAPI';
 
 export interface authorizationState {
   isAuthorized: boolean;
