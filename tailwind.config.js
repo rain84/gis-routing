@@ -6,8 +6,13 @@ module.exports = {
   theme: {
     screens: {
       ...defaultTheme.screens,
-      'lg': '1124px',
+      lg: '1124px'
     },
+    extend: {
+      zIndex: {
+        500: '500'
+      }
+    }
   },
   variants: {
     extend: {}
